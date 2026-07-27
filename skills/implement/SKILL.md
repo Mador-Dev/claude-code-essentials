@@ -75,3 +75,15 @@ Verify:
 - No planned requirement was skipped.
 
 Summarize what was implemented, tested, and any remaining limitations.
+
+## 8. Cleanup
+
+Delete all temporary implementation artifacts created during this workflow, including but not limited to:
+
+- `plan-to-implement.md`
+- The generated specification directory (`specs/` or `{specs-folder}`)
+- Any temporary notes, scratch files, or helper documents created solely for this implementation process
+
+Only delete workflow-generated artifacts. Do **not** remove project source files, documentation, tests, or any files that existed before the workflow.
+
+Finish by confirming that cleanup completed successfully.
