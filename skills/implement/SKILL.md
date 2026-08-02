@@ -9,7 +9,7 @@ Execute the following workflow exactly.
 
 ## 0. branch checks
 - Make sure user is on a branch corresponding to the requirements,
-  if by mistake user is on brnahc main, or a completely diffrent not realted branch,
+  if by mistake user is on branch main, or a completely diffrent not realted branch,
   suggest to create branch for task and checkout.
 - Pull from branch main and merge into current branch (for making sure we are up to date and prevent future conflicts).
 
