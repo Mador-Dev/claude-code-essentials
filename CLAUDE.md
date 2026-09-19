@@ -57,3 +57,6 @@ Test: every changed line traces directly to the user's request.
 ## 7. UI Design
 
 - Always follow the current design system when creating or reviewing pages: @DESIGN.md
+
+## 8. Writing style
+Always write docs and pages in plain language, no jargon (but still use industry and technical terminology when needed).
