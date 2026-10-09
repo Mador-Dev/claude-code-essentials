@@ -81,6 +81,16 @@ Run:
 - Fix all failing tests before continuing.
 ```
 
+### Token budget and parallel sessions
+
+Don't let a long implementation run into the context limit mid-phase — a truncated run loses work.
+
+- Estimate the size before starting. If the plan has independent phases (no shared files, no ordering dependency), split them across parallel subagents or sessions and merge the results.
+- Keep sequential work inline. Only parallelize what genuinely doesn't share files.
+- Give each parallel session a self-contained brief: the goal, the files it owns, what's already decided, and what not to touch.
+- Checkpoint after each phase, so a restart resumes from the last good state instead of the beginning.
+- If you're nearing the limit anyway, stop at a checkpoint and continue in a fresh session rather than compacting mid-edit.
+
 ### Refactoring overengineered code
 
 When the code you must touch is overengineered or overcomplicated, simplify it — but never break a feature.
@@ -117,15 +127,39 @@ If nothing needs updating, say so and move on.
 
 ## 8. Final Validation
 
-Verify:
+Verify by running it, not by reading the diff:
 
-- Every specification item is implemented.
-- All tests pass.
-- No planned requirement was skipped.
+- Every specification item is implemented — walk the list and check each one against real output.
+- Every explicit and inferred requirement from `plan-to-implement.md` is met.
+- The project builds, the app boots, and each changed flow works end to end.
+- All tests pass. Fix failures; never skip, disable, or weaken a test to get green.
+
+If something doesn't work or a requirement wasn't achieved, say so plainly and fix it before finishing. Don't report done on work you haven't exercised.
 
 Summarize what was implemented, tested, and any remaining limitations.
 
-## 9. Cleanup
+## 9. Screenshots of UI changes
+
+If the change touches any user-facing page or component, capture a screenshot of each changed page in its final state (use the Playwright skill, or `/run` to launch the app).
+
+- One screenshot per changed page or state, named for the page.
+- Include before and after when you changed a page that already existed.
+- Attach them to the PR if there is one; otherwise include them in the summary to the user.
+
+If nothing user-facing changed, say so and skip this step.
+
+## 10. Manual steps you can't run
+
+Some steps are outside what you can execute: setting env vars and secrets, running migrations against a real environment, third-party dashboard config, DNS, deploy or app-store actions, anything needing credentials you don't have.
+
+Never guess at them and never silently leave them out. Write them up as an explicit checklist — exact commands or click paths, the values needed, and the order to run them — then:
+
+- Attach the checklist to the PR (as a comment, or a `## Manual steps` section in the description).
+- Also surface it in the summary to the user.
+
+If there are none, say "no manual steps required".
+
+## 11. Cleanup
 
 Delete all temporary implementation artifacts created during this workflow, including but not limited to:
 
