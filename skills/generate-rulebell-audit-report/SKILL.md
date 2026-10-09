@@ -1,9 +1,9 @@
 ---
-name: generate-startix-audit-report
-description: 'Read-only architecture audit for the Startix codebase (an AI analyst that monitors users'' stock portfolios and generates insights/reports): maps every major business and technical flow as it exists right now, compares it against the simplest reliable best-practice design, and scores current vs ideal. Publishes the result as an artifact and ends with a prioritized P0/P1/P2 change list ready to hand to /implement. Never modifies code. Use whenever the user wants an architecture audit, sanity check, or health-check of Startix, or invokes /generate-startix-audit-report directly — this is meant to be re-run periodically as the codebase evolves, not a one-off.'
+name: generate-rulebell-audit-report
+description: 'Read-only architecture audit for the Rulebell codebase (an AI analyst that monitors users'' stock portfolios and generates insights/reports): maps every major business and technical flow as it exists right now, compares it against the simplest reliable best-practice design, and scores current vs ideal. Publishes the result as an artifact and ends with a prioritized P0/P1/P2 change list ready to hand to /implement. Never modifies code. Use whenever the user wants an architecture audit, sanity check, or health-check of Rulebell, or invokes /generate-rulebell-audit-report directly — this is meant to be re-run periodically as the codebase evolves, not a one-off.'
 ---
 
-# /generate-startix-audit-report
+# /generate-rulebell-audit-report
 
 A read-only architecture audit. It never edits code — only reads, reasons, and reports.
 
@@ -18,7 +18,7 @@ Treat every run as standing on its own: analyze the codebase exactly as it exist
 
 ## 1. Understand the system
 
-Startix is an AI analyst that monitors users' stock portfolios and generates insights/reports. Identify the major flows, especially:
+Rulebell is an AI analyst that monitors users' stock portfolios and generates insights/reports. Identify the major flows, especially:
 
 - User onboarding
 - Authentication / account creation
@@ -79,7 +79,7 @@ Focus on meaningful architectural differences, not code-level nitpicks (that's w
 
 ## 5. Best parts (FACT)
 
-The 3–7 strongest architectural decisions currently in Startix, and briefly why each is good. Don't pad this list if fewer than 3 genuinely qualify.
+The 3–7 strongest architectural decisions currently in Rulebell, and briefly why each is good. Don't pad this list if fewer than 3 genuinely qualify.
 
 ## 6. Worst parts (FACT)
 
@@ -117,7 +117,7 @@ List anything you couldn't verify with confidence (code you didn't have access t
 
 ## 10. Publish the artifact
 
-Load the `artifact-design` skill, then publish the audit as a single HTML artifact (title it something like "Startix Architecture Audit"). Structure it to mirror sections 1–9 above — use tables for section 4, and render the flow diagrams from sections 2, 3, and 8 as Mermaid flowcharts (Artifacts render these natively) rather than plain text arrows. Clearly visually distinguish FACT sections (2, 5, 6) from RECOMMENDATION sections (3, 7, 8) — e.g. a consistent label or accent color per type, defined in the light/dark palette per the artifact-design skill.
+Load the `artifact-design` skill, then publish the audit as a single HTML artifact (title it something like "Rulebell Architecture Audit"). Structure it to mirror sections 1–9 above — use tables for section 4, and render the flow diagrams from sections 2, 3, and 8 as Mermaid flowcharts (Artifacts render these natively) rather than plain text arrows. Clearly visually distinguish FACT sections (2, 5, 6) from RECOMMENDATION sections (3, 7, 8) — e.g. a consistent label or accent color per type, defined in the light/dark palette per the artifact-design skill.
 
 ## 11. Hand off to implementation
 
